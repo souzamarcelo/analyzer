@@ -1,4 +1,6 @@
 from enumerates import Type
+from math import floor
+from math import ceil
 
 STEP = 100
 
@@ -16,4 +18,4 @@ class Parameter:
         if self.type == Type.INTEGER:
             return [i for i in range(self.domain[0], self.domain[1] + 1)]
         if self.type == Type.REAL:
-            return [r / STEP for r in range(self.domain[0], self.domain[1] * int(STEP) + 1, 1)]
+            return [r / STEP for r in range(floor(self.domain[0]), ceil(self.domain[1]) * int(STEP) + 1, 1) if (r / STEP) >= self.domain[0] and (r / STEP) <= self.domain[1]]
