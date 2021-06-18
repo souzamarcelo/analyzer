@@ -11,11 +11,18 @@ class Parameter:
         self.type = _type
         self.domain = _domain
         self.conditions = _conditions
+        self.values = self.__get_values()
 
-    def get_values(self):
+    def __get_values(self):
         if self.type == Type.CATEGORICAL:
             return self.domain
         if self.type == Type.INTEGER:
             return [i for i in range(self.domain[0], self.domain[1] + 1)]
         if self.type == Type.REAL:
             return [r / STEP for r in range(floor(self.domain[0]), ceil(self.domain[1]) * int(STEP) + 1, 1) if (r / STEP) >= self.domain[0] and (r / STEP) <= self.domain[1]]
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.__str__()

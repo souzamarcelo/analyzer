@@ -1,0 +1,100 @@
+TESTCASE 1:
+=== Globality ===
+p1: G=0.50  G'=0.50
+p2: G=0.50  G'=0.50
+
+===== Impact ====
+p1: I=0.50  I'=0.50
+p2: I=0.50  I'=0.50
+
+
+TESTCASE 2:
+=== Globality ===
+p1: G=0.67  G'=0.67
+p2: G=0.67  G'=1.00
+
+===== Impact ====
+p1: I=0.50  I'=0.50
+p2: I=0.67  I'=1.00
+
+
+TESTCASE 2.1:
+=== Globality ===
+p1: G=0.60  G'=0.60
+p2: G=0.80  G'=1.00
+
+===== Impact ====
+p1: I=0.50  I'=0.50
+p2: I=0.80  I'=1.00
+
+
+TESTCASE 2.2:
+=== Globality ===
+p1: G=1.00  G'=1.00
+p2: G=0.80  G'=1.00
+
+===== Impact ====
+p1: I=0.90  I'=0.90
+p2: I=0.80  I'=1.00
+
+
+TESTCASE 2.3:
+=== Globality ===
+p1: G=1.00  G'=1.00
+p2: G=0.80  G'=1.00
+
+===== Impact ====
+p1: I=1.50  I'=1.50
+p2: I=0.80  I'=1.00
+
+
+TESTCASE 3:
+=== Globality ===
+p1: G=1.00  G'=1.00
+p2: G=0.00  G'=0.00
+
+===== Impact ====
+p1: I=1.00  I'=1.00
+p2: I=0.00  I'=0.00
+
+
+TESTCASE 4 {A, B}:
+=== Globality ===
+p1: G=1.00  G'=1.00
+
+===== Impact ====
+p1: I=1.00  I'=1.00
+
+
+TESTCASE 4 {A, B, C, D}:
+=== Globality ===
+p1: G=1.00  G'=1.00
+
+===== Impact ====
+p1: I=1.00  I'=1.00
+
+
+TESTCASE 5:
+=== Globality ===
+p1: G=1.00  G'=1.00
+p2: G=0.00  G'=0.00
+p3: G=0.00  G'=0.00
+
+===== Impact ====
+p1: I=1.00  I'=1.00
+p2: I=0.00  I'=0.00
+p3: I=0.00  I'=0.00
+
+
+TESTCASE 6:
+=== Globality ===
+p1: G=0.40  G'=0.40
+p2: G=0.40  G'=0.40
+p3: G=0.40  G'=1.00
+
+===== Impact ====
+p1: I=0.40  I'=0.40
+p2: I=0.40  I'=0.40
+p3: I=0.80  I'=2.00
+
+
