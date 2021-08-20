@@ -1,6 +1,6 @@
 from enumerates import Type
 
-AMOUNT = 3
+AMOUNT = 10
 
 class Parameter:
     def __init__(self, _name, _command, _type, _domain, _conditions = ''):

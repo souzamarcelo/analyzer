@@ -19,14 +19,14 @@ class Scenario:
         self.parameters.append(Parameter('beta', '--beta', Type.REAL, [0.0, 10.0]))
         self.parameters.append(Parameter('rho', '--rho', Type.REAL, [0.01, 1.0]))
         self.parameters.append(Parameter('ants', '--ants', Type.INTEGER, [5, 100]))
-        #self.parameters.append(Parameter('q0', '--q0', Type.REAL, [0.0, 1.0], 'algorithm == \'acs\''))
-        #self.parameters.append(Parameter('rasrank', '--rasrank', Type.INTEGER, [1, 100], 'algorithm == \'ras\''))
-        #self.parameters.append(Parameter('elitistants', '--elitistants', Type.INTEGER, [1, 750], 'algorithm == \'eas\''))
-        #self.parameters.append(Parameter('nnls', '--nnls', Type.INTEGER, [5, 50], 'localsearch in [\'1\', \'2\', \'3\']'))
-        #self.parameters.append(Parameter('dlb', '--dlb', Type.CATEGORICAL, ['0', '1'], 'localsearch in [\'1\', \'2\', \'3\']'))
+        self.parameters.append(Parameter('q0', '--q0', Type.REAL, [0.0, 1.0], 'algorithm == \'acs\''))
+        self.parameters.append(Parameter('rasrank', '--rasrank', Type.INTEGER, [1, 100], 'algorithm == \'ras\''))
+        self.parameters.append(Parameter('elitistants', '--elitistants', Type.INTEGER, [1, 750], 'algorithm == \'eas\''))
+        self.parameters.append(Parameter('nnls', '--nnls', Type.INTEGER, [5, 50], 'localsearch in [\'1\', \'2\', \'3\']'))
+        self.parameters.append(Parameter('dlb', '--dlb', Type.CATEGORICAL, ['0', '1'], 'localsearch in [\'1\', \'2\', \'3\']'))
         self.instances = []
         self.instances.append('./1000-1.tsp')
-        self.command = './acotsp --quiet -r 1 -t 5 --seed <seed> -i <instance> <configuration>'
+        self.command = './acotsp --quiet -r 1 -t 10 --seed <seed> -i <instance> <configuration>'
 
     def parse(self, configuration):
         text_config = ''
