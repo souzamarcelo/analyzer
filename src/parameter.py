@@ -1,8 +1,6 @@
 from enumerates import Type
-from math import floor
-from math import ceil
 
-STEP = 100
+AMOUNT = 3
 
 class Parameter:
     def __init__(self, _name, _command, _type, _domain, _conditions = ''):
@@ -17,12 +15,15 @@ class Parameter:
         if self.type == Type.CATEGORICAL:
             return self.domain
         if self.type == Type.INTEGER:
-            return [i for i in range(self.domain[0], self.domain[1] + 1)]
+            step = (self.domain[1] - self.domain[0]) / (AMOUNT - 2 + 1)
+            return [int(round(self.domain[0] + (i * step), 0)) for i in range(0, AMOUNT)]
+            #return [i for i in range(self.domain[0], self.domain[1] + 1)]
         if self.type == Type.REAL:
-            return [r / STEP for r in range(floor(self.domain[0]), ceil(self.domain[1]) * int(STEP) + 1, 1) if (r / STEP) >= self.domain[0] and (r / STEP) <= self.domain[1]]
+            step = (self.domain[1] - self.domain[0]) / (AMOUNT - 2 + 1)
+            return [round(self.domain[0] + (i * step), 2) for i in range(0, AMOUNT)]
 
     def __str__(self):
-        return self.name
+        return 'Parameter: ' + self.name + ' (' + str(self.type) + ', ' + str(self.domain) + ', ' + ('no conditions' if self.conditions == '' else self.conditions) + ')'
 
     def __repr__(self):
         return self.__str__()
