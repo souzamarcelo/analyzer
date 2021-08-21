@@ -15,12 +15,12 @@ class Parameter:
         if self.type == Type.CATEGORICAL:
             return self.domain
         if self.type == Type.INTEGER:
+            if self.domain[1] - self.domain[0] <= AMOUNT: return [i for i in range(self.domain[0], self.domain[1] + 1)]
             step = (self.domain[1] - self.domain[0]) / (AMOUNT - 2 + 1)
-            return [int(round(self.domain[0] + (i * step), 0)) for i in range(0, AMOUNT)]
-            #return [i for i in range(self.domain[0], self.domain[1] + 1)]
+            return list(set([int(round(self.domain[0] + (i * step), 0)) for i in range(0, AMOUNT)]))
         if self.type == Type.REAL:
             step = (self.domain[1] - self.domain[0]) / (AMOUNT - 2 + 1)
-            return [round(self.domain[0] + (i * step), 2) for i in range(0, AMOUNT)]
+            return list(set([round(self.domain[0] + (i * step), 2) for i in range(0, AMOUNT)]))
 
     def __str__(self):
         return 'Parameter: ' + self.name + ' (' + str(self.type) + ', ' + str(self.domain) + ', ' + ('no conditions' if self.conditions == '' else self.conditions) + ')'

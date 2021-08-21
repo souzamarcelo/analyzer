@@ -2,8 +2,10 @@ from enumerates import Type
 from parameter import Parameter
 from configuration import Configuration
 from scenario import Scenario
+from artificial import Artificial
 
-scenario = Scenario()
+
+scenario = Artificial()
 base_configs = []
 
 instances = {}
@@ -17,15 +19,15 @@ for param in scenario.parameters:
         results[param][instance] = []
 
 def analyze():
-    print('Total base configurations: ' + str(len(base_configs)))
-    print('Last base configuration: ' + str(base_configs[-1][0]) + ' = ' + str(base_configs[-1][1]))
-    print('Parameter importance:')
+    print('Total base configurations: ' + str(len(base_configs)), flush = True)
+    print('Last base configuration: ' + str(base_configs[-1][0]) + ' = ' + str(base_configs[-1][1]), flush = True)
+    print('Parameter importance:', flush = True)
     importance = []
     for param in scenario.parameters:
         sum_param = 0
         for instance in results[param]:
             if len(results[param][instance]) > 0:
-                max_instance = instances[instance][1] - instances[instance][0]
+                max_instance = max(instances[instance][1] - instances[instance][0], 1)
                 sum_param_instance = 0
                 for result_instance in results[param][instance]:
                     sum_param_instance += result_instance / max_instance
@@ -37,7 +39,7 @@ def analyze():
     counter = 0
     for item in importance:
         counter += 1
-        print(str(counter) + '. ' + item[0].name + ': ' + str(item[1]))
+        print(str(counter) + '. ' + item[0].name + ': ' + str(item[1]), flush = True)
     print('----------')
 
 def update_instances(instance, new_result):
