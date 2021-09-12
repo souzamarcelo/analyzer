@@ -23,7 +23,11 @@ class Configuration:
         value = self.parameters[param]
         if conditions != '':
             for p in self.parameters:
-                conditions = conditions.replace(p.name + ' ', 'self.get_value_by_name(\'' + p.name + '\') ')
+                if p.name in conditions and self.parameters[p] is None:
+                    conditions = 'False'
+                    break
+                else:
+                    conditions = conditions.replace(p.name + ' ', 'self.get_value_by_name(\'' + p.name + '\') ')
             if not eval(conditions) and value is not None: return False
             if eval(conditions) and value is None: return False
         else:
@@ -54,7 +58,11 @@ class Configuration:
             if param.name != p.name and self.parameters[p] is None:
                 conditions = p.conditions
                 for p2 in self.parameters:
-                    conditions = conditions.replace(p2.name + ' ', 'self.get_value_by_name(\'' + p2.name + '\') ')
+                    if p2.name in conditions and self.parameters[p2] is None:
+                        conditions = 'False'
+                        break
+                    else:
+                        conditions = conditions.replace(p2.name + ' ', 'self.get_value_by_name(\'' + p2.name + '\') ')
                 if conditions == '' or eval(conditions): activations.append(p)
         self.set_value(param, old_value)
         return activations
@@ -67,16 +75,27 @@ class Configuration:
                 conditions = p.conditions
                 if conditions != '':
                     for p2 in self.parameters:
-                        conditions = conditions.replace(p2.name + ' ', 'self.get_value_by_name(\'' + p2.name + '\') ')
-                    if not eval(conditions): deactivations.append(p)
+                        if p2.name in conditions and self.parameters[p2] is None:
+                            conditions = 'False'
+                            break
+                        else:
+                            conditions = conditions.replace(p2.name + ' ', 'self.get_value_by_name(\'' + p2.name + '\') ')
+                    if not eval(conditions):
+                        deactivations.append(p)
+                        deactivations.extend(self.change_deactivates(p, None))
         self.set_value(param, old_value)
         return deactivations
 
     def fix(self):
         for param in self.parameters:
             conditions = param.conditions
-            for p in self.parameters:
-                conditions = conditions.replace(p.name + ' ', 'self.get_value_by_name(\'' + p.name + '\') ')
+            if conditions != '':
+                for p in self.parameters:
+                    if p.name in conditions and self.parameters[p] is None:
+                        conditions = 'False'
+                        break
+                    else:
+                        conditions = conditions.replace(p.name + ' ', 'self.get_value_by_name(\'' + p.name + '\') ')
             if conditions != '' and not eval(conditions):
                 self.parameters[param] = None
 

@@ -1,0 +1,58 @@
+Final experiment:
+- 100 trees
+- 1000 samples
+- Imputation: fANOVA (mid-point), RF (random)
+- Performance: normalized
+
+
+ARTIFICIAL 1
+
+BASIC
+Parameter importance:
+1. param_a: 0.8739
+2. param_c: 0.4444
+3. param_b: 0.3333
+
+RF
+  variable mean_min_depth no_of_nodes mse_increase node_purity_increase
+3  param_c           0.98        5501  0.008501181             5.780232
+2  param_b           1.07        5410  0.003933064             4.353099
+1  param_a           1.16        5482  0.035700456            16.473532
+  no_of_trees times_a_root   p_value
+3         100           42 0.2743175
+2         100           31 0.8181487
+1         100           27 0.3877200
+
+FANOVA
+parameter ind_imp tot_imp ind_std tot_std
+param_a 0.27915224201530786 0.27915224201530786 0.24930082285137423 0.24930082285137423
+param_b 0.10011189384519849 0.10011189384519849 0.11077713029125336 0.11077713029125336
+param_c 0.37832103366752373 0.37832103366752373 0.26707171667087576 0.26707171667087576
+
+
+ARTIFICIAL 2
+
+BASIC
+1. param_c: 0.4425
+2. param_a: 0.3423
+3. param_b: 0.2727
+4. param_d: 0.2273
+
+RF
+  variable mean_min_depth no_of_nodes mse_increase node_purity_increase
+3  param_c           1.27        4368 0.0061933930             4.436027
+1  param_a           1.38        4339 0.0084845535             4.882692
+4  param_d           1.48        4473 0.0001339687             1.213934
+2  param_b           1.49        4540 0.0197875485            10.216445
+  no_of_trees times_a_root    p_value
+3         100           30 0.86094049
+1         100           26 0.94404141
+4         100           19 0.23026345
+2         100           25 0.02898214
+
+FANOVA
+parameter ind_imp tot_imp ind_std tot_std
+param_a 0.12661612742834596 0.12661612742834596 0.12310946530386042 0.12310946530386042
+param_b 0.51793243920034 0.51793243920034 0.19005023538131172 0.19005023538131172
+param_c 0.10784664051207775 0.10784664051207775 0.07436515964888343 0.07436515964888343
+param_d 0.07135710833795601 0.07135710833795601 0.11714471235177606 0.11714471235177606

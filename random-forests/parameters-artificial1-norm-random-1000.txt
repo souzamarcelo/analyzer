@@ -1,0 +1,4 @@
+#name	switch	type	domain	|condition
+param_a	"pa"	r	(0,1)
+param_b	"pb"	r	(0,1)   | param_a <= 0.2
+param_c	"pc"	r	(0,1)	| param_a >= 0.1 & param_a <= 0.3
